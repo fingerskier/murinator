@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>murinator</title>
+
+		<style type="text/css">
+			body {
+				position: relative;
+			}
+
+			.rodent {
+				background-color: grey;
+				border: thin solid blue;
+
+				position: absolute;
+			}
+		</style>
+
+		<script src="jquery.js"></script>
+		<script>
+$(document).ready(function(){
+	var body = $('body')
+
+	body.css({
+		height: $(document).height(),
+		width: $(document).width()
+	})
+
+	const maxWidth = body.width() - 33
+	const maxHeight = body.height() - 33
+
+	const maxValue = maxHeight * maxWidth
+
+	console.log(maxWidth, maxHeight)
+
+	function printTarget() {
+		var width = getRandomInt(7,maxWidth)
+		var height = getRandomInt(7,maxHeight)
+
+		var minX = 0
+		var maxX = body.width() - width
+
+		var minY = 0
+		var maxY = body.height() - height
+
+		var X = getRandomInt(minX, maxX)
+		var Y = getRandomInt(minY, maxY)
+
+		var value = maxValue - (height * width)
+
+console.log(minX, maxX, minY, maxY)
+
+		var position = {
+			left: X,
+			top: Y,
+			height: height,
+			width: width
+		}
+
+console.log(position)
+
+		body
+		.append(`<div class="rodent"></div>`)
+		.css(position)
+	}
+
+	printTarget()
+})
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+		</script>
+	</head>
+
+	<body>
+	</body>
+</html>
